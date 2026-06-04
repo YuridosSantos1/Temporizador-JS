@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro Premium</title>
+    <!-- Google Fonts: Outfit (modern display) & Space Mono (tabular numbers) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background glowing orbs for premium visual depth -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <main class="app-container">
+        <div class="stopwatch-card">
+            <header class="header">
+                <span class="badge">Precisão Absoluta</span>
+                <h1 id="main-title">Cronômetro</h1>
+            </header>
+
+            <!-- Visual ring containing the digital clock -->
+            <div class="visual-ring-container">
+                <svg class="progress-ring" viewBox="0 0 220 220">
+                    <circle class="progress-ring__track" cx="110" cy="110" r="100" />
+                    <circle class="progress-ring__circle" id="progress-circle" cx="110" cy="110" r="100" />
+                </svg>
+                
+                <div class="timer-display" id="timer-display">
+                    <div class="time-main">
+                        <span id="hours" class="time-segment">00</span><span class="colon">:</span><span id="minutes" class="time-segment">00</span><span class="colon">:</span><span id="seconds" class="time-segment">00</span>
+                    </div>
+                    <div class="time-ms">
+                        <span class="dot">.</span><span id="milliseconds">00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls panel -->
+            <div class="controls-panel">
+                <button id="btn-reset" class="control-btn btn-secondary" title="Zerar (R)" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    <span>Zerar</span>
+                </button>
+
+                <button id="btn-start" class="control-btn btn-primary" title="Iniciar / Retomar (Espaço)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <span>Iniciar</span>
+                </button>
+
+                <button id="btn-stop" class="control-btn btn-danger" title="Pausar (Espaço)" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
+                    <span>Pausar</span>
+                </button>
+
+                <button id="btn-lap" class="control-btn btn-secondary" title="Marcar Volta (L)" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"/><line x1="9" x1="9" y1="3" y2="18"/><line x1="15" x1="15" y1="6" y2="21"/></svg>
+                    <span>Volta</span>
+                </button>
+            </div>
+
+            <!-- Laps display section -->
+            <div class="laps-container" id="laps-container" style="display: none;">
+                <div class="laps-header">
+                    <span>Volta</span>
+                    <span>Tempo da Volta</span>
+                    <span>Tempo Total</span>
+                </div>
+                <div class="laps-list-wrapper">
+                    <ul class="laps-list" id="laps-list">
+                        <!-- Dynamic laps items inserted here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
